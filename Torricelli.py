@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 #    Copyright © 2010 Giuseppe Mercurio
@@ -91,7 +91,7 @@ from pyArgand import ArgandPlotWidget
 # argument of the scipy.interpolate.interp1d interpolation function
 interp1d_kind = 'linear'
 
-#interp1d_kind = 'cubic' # probaly nicer, but very slow
+#interp1d_kind = 'cubic' # probably nicer, but very slow
 
 
 ## QDialog requesting the user to choose a group name suffix for regrouping
@@ -215,7 +215,7 @@ class Torricelli(QMainWindow):
             self.Argand_groupAverage(
                 gp_items=list(self.groupsChangedViaDrag), refresh=False)
             # returning True interupts the handling of the event
-            # event handling stopps here. This is neccessary if you want your filter to
+            # event handling stops here. This is necessary if you want your filter to
             # be applied after the original event handling. In that case one should add something like
             # SourceOfEventObject.theEvent(event) before the filter code
             return True
@@ -359,7 +359,7 @@ class Torricelli(QMainWindow):
     ## Write any list of arrays to the specified file, and save a picture of the given plot
     # file_name: name without extension or folder
     # name_list: list of names of each saved array in array_list
-    # data_list: array containing data of same lenth
+    # data_list: array containing data of same length
     # the_plot:  pyqtgraph.PlotWidget name
     def Save_Data_and_PlotPicture(self,
                                   file_name,
@@ -428,14 +428,14 @@ class Torricelli(QMainWindow):
                     """TypeError: 'float' object cannot be interpreted as an index</b></font>"""
 
                     QMessageBox.warning(self, "Warning", "<b>There is a bug in the particular version of pyqtgraph you are using!</b> "+\
-                    "If you get an error message after this warning similar to: <br><br>"+errMsg+"<br><br>Then there are two possiblities what you can do.<br>"+\
+                    "If you get an error message after this warning similar to: <br><br>"+errMsg+"<br><br>Then there are two possibilities what you can do.<br>"+\
                     "Easiest way is to use just another version of pyqtgraph. v0.9.10 for example. However sometimes the error seems to occur there, too."+\
                     "Other possibility: You can implement a workaround and edit the file ImageExporter.py from the pyqtgraph module. To do so change the following in the file:<br><br>"+\
                     """Change the following line:<br><br>"""+\
                     """<font face=courier><b>bg = np.empty((self.params['width'], self.params['height'], 4), dtype=np.ubyte)</b></font><br>"""+\
                     """<br>to:<br><br>"""+\
                     """<font face=courier><b>bg = np.empty((int(self.params['width']), int(self.params['height']),4), dtype=np.ubyte)</b></font>"""+\
-                    """<br><br><b>NOTE:</b> This is not a bug in Torricelli. You have to edit the ImageExporter.py file of the pyqtgraph package itsef!"""+\
+                    """<br><br><b>NOTE:</b> This is not a bug in Torricelli. You have to edit the ImageExporter.py file of the pyqtgraph package itself!"""+\
                     """After upgrading or reinstalling pyqtgraph this modification can be overwritten and you can get the error again.""")
                     print("TypeError: " + str(err))
 
@@ -539,7 +539,7 @@ class Torricelli(QMainWindow):
 
     # Treats and plot the data as given by the user, and fill Torricelli arrays for later use
     # !! -> The Refl and EY are here normalized to I0
-    # !! -> The reflectivity estimited error is sqrt(refl_normalised)
+    # !! -> The reflectivity estimated error is sqrt(refl_normalised)
     def Transform_R_and_EY_userFile_to_TorricelliFriendly(
             self, slice_num=0, calledFromAngularCheckBox=False):
         if '' == self.ui.ey_name.text():
@@ -840,7 +840,7 @@ class Torricelli(QMainWindow):
                     element) == 'Cubic':
             return 'DIAMOND'
         else:
-            return 'Unknnown'
+            return 'Unknown'
 
     ## Upon changing the DCM element, the structure is displayed,
     # Also the possible DW methods are listed
@@ -1018,7 +1018,7 @@ class Torricelli(QMainWindow):
         self.ui.label_dhkl_sample.setText('')
         self.ui.label_EB_sample.setText('')
 
-    ## General function that calculates first the structure factor of the sample, and then, knowing the wanted Bragg energy, it calculate the corresponding structure factor for the double monochomator.
+    ## General function that calculates first the structure factor of the sample, and then, knowing the wanted Bragg energy, it calculate the corresponding structure factor for the double monochromator.
     # Finally, it will all be displayed in the GUI
     def calculate_structure_factors(self):
         self.Pyqt_View_refl_fit.clear()
@@ -1394,7 +1394,7 @@ class Torricelli(QMainWindow):
         #    print Crystal, 'has an unknown lattice structure:', Lattice_type
         #    return
 
-        #### MORE GENERAL FORMULI LEADING TO d_hkl #####
+        #### MORE GENERAL FORMULAE LEADING TO d_hkl #####
         # Unit cell volume. See International Tables for Crystallography (ITC)
         # ITC (2016) vol A, Chap. 1.3.2, p.24 (http://it.iucr.org/Ac/contents/)
         #V = a*b*c*np.sqrt( 1 - (np.cos(alpha))**2 - (np.cos(beta))**2 - (np.cos(gamma))**2 + 2*np.cos(alpha)*np.cos(beta)*np.cos(gamma))

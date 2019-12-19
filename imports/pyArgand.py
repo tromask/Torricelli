@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 #    Copyright © 2010 Giuseppe Mercurio
@@ -42,11 +42,10 @@ import colorsys
 import pyqtgraph as pg
 import numbers
 from scipy.ndimage import gaussian_filter1d
-# from PyQt4 import QtCore, QtGui
-# from pyqtgraph.Qt import QtGui, QtCore, USE_PYSIDE
+
 pg.setConfigOption('background', None)  # means transparent background
 pg.setConfigOption('foreground', 'k')
-# from PyQt4.QtCore import QtCore.pyqtSignal, pyqtSlot
+
 from PyQt5 import QtCore
 from PyQt5.QtGui import QColor, QPen
 from PyQt5.QtWidgets import QGraphicsEllipseItem, QGraphicsLineItem
@@ -155,7 +154,7 @@ class ArgandPlotWidget(
             self.radialTickLabels.append(self.radialGridLineLabel)
             self.addItem(self.radialGridLineLabel)
         # Add (0,0) cross (added last to be in the foreground)
-        #self.addLine(x=0, pen=0.0) # Infinte lines
+        #self.addLine(x=0, pen=0.0) # Infinite lines
         #self.addLine(y=0, pen=0.0)
         self.plot(
             [0, 0], [-1, 1], pen=(0, 0, 0)
@@ -623,7 +622,7 @@ class GraphItemExtended(pg.GraphItem):
                     # a workaround for this bug is to address the QGraphicsPathItem
                     # directly via the setRotation method.
                     # NOTE: This rotation is added to the rotation in the definition of the
-                    # ArrowItem. So you have to initilize it like ArrowItem(angle=0,...)
+                    # ArrowItem. So you have to initialize it like ArrowItem(angle=0,...)
                     arrowHead.setRotation(
                         np.arctan2(*self.data['pos'][i]) * 180 / np.pi + 90)
 
